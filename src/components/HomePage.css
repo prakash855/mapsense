@@ -1,0 +1,20 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 2rem 0;
+}
+.core{
+    padding: 2rem;
+}
+.name{
+    font-weight: 500;
+    font-size: 30px;
+}
+.actions{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+.MuiTableCell-head {
+    color: white !important;
+}
