@@ -43,26 +43,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide(props) {
   const classes = useStyles();
-  
-  const history = useHistory()
+
+  const history = useHistory();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [pinCode, setPinCode] = useState("");
 
   const submitHandler = (e) => {
-    e.preventDefault()
-    history.push('/homepage')
-    localStorage.setItem('firstName',firstName)
-    localStorage.setItem('lastName',lastName)
-    localStorage.setItem('pinCode',pinCode)
+    e.preventDefault();
+    history.push("/homepage");
+    localStorage.setItem("firstName", firstName);
+    localStorage.setItem("lastName", lastName);
+    localStorage.setItem("pinCode", pinCode);
   };
 
   const resetHandler = () => {
-    setFirstName('')
-    setLastName('')
-    setPinCode('')
-  }
+    setFirstName("");
+    setLastName("");
+    setPinCode("");
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -128,7 +128,7 @@ export default function SignInSide(props) {
               Show Statstics
             </Button>
             <Button
-            onClick={resetHandler}
+              onClick={resetHandler}
               style={{
                 backgroundColor: "#FF3838",
                 color: "white",

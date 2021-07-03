@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,7 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import './HomePage.css'
+import "./HomePage.css";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
@@ -20,21 +20,22 @@ const useStyles = makeStyles({
 export default function HomePage(props) {
   const classes = useStyles();
 
-  const history = useHistory()
+  const history = useHistory();
 
-  const [data, setData] = useState([])
-  console.log(data)
+  const [data, setData] = useState([]);
 
   const getInfo = () => {
-    fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pinCode}&date=${dateNow}`)
-    .then(res=>res.json())
-    .then(r=>setData(r.sessions))
-    .catch(err => console.log(err))
+    fetch(
+      `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pinCode}&date=${dateNow}`
+    )
+      .then((res) => res.json())
+      .then((r) => setData(r.sessions))
+      .catch((err) => console.log(err));
   };
 
-  useEffect(()=>{
-    getInfo()
-  },[])
+  useEffect(() => {
+    getInfo();
+  }, []);
 
   let dateObject = new Date();
   let date =
@@ -44,25 +45,32 @@ export default function HomePage(props) {
     `0${dateObject.getMonth() + 1}`;
   let year = dateObject.getFullYear();
   let dateNow = `${date}-${month}-${year}`;
-  const firstName = localStorage.getItem('firstName')
-  const lastName = localStorage.getItem('lastName')
-  const pinCode = localStorage.getItem('pinCode')
+  const firstName = localStorage.getItem("firstName");
+  const lastName = localStorage.getItem("lastName");
+  const pinCode = localStorage.getItem("pinCode");
 
   return (
     <div className="core">
       <div className="main">
         <div className="info">
-            <div><span className="name">{`${firstName} ${lastName}`}</span>,{`${pinCode}`}</div>
-            <small className="mail">sharma.rohit408@gmail.com</small>
+          <div>
+            <span className="name">{`${firstName} ${lastName}`}</span>,
+            {`${pinCode}`}
+          </div>
+          <small className="mail">sharma.rohit408@gmail.com</small>
         </div>
         <div className="logo">
-            <img style={{ width: "9rem"}} src="/Mapsense Logo.png" alt="Mapsense Logo.png"/>
+          <img
+            style={{ width: "9rem" }}
+            src="/Mapsense Logo.png"
+            alt="Mapsense Logo.png"
+          />
         </div>
       </div>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
-            <TableRow style={{backgroundColor:"#332272", color:"green"}}>
+            <TableRow style={{ backgroundColor: "#332272", color: "green" }}>
               <TableCell>Pincode</TableCell>
               <TableCell align="right">District Name</TableCell>
               <TableCell align="right">Name</TableCell>
@@ -85,15 +93,32 @@ export default function HomePage(props) {
                 <TableCell align="right">{row.state_name}</TableCell>
                 <TableCell align="right">{row.vaccine}</TableCell>
                 <TableCell align="right">{row.b}</TableCell>
-                <TableCell align="right">{row.slots.map(slot=><div>{slot}</div>)}</TableCell>
+                <TableCell align="right">
+                  {row.slots.map((slot) => (
+                    <div>{slot}</div>
+                  ))}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
       <div className="actions">
-        <Button onClick={()=>history.goBack()} style={{marginRight:"1rem"}} variant="contained" color="secondary">Go Back</Button>
-        <Button style={{marginLeft:"1rem"}} variant="contained" color="primary">Update Data</Button>
+        <Button
+          onClick={() => history.goBack()}
+          style={{ marginRight: "1rem" }}
+          variant="contained"
+          color="secondary"
+        >
+          Go Back
+        </Button>
+        <Button
+          style={{ marginLeft: "1rem" }}
+          variant="contained"
+          color="primary"
+        >
+          Update Data
+        </Button>
       </div>
     </div>
   );
