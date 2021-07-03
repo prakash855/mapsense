@@ -28,6 +28,21 @@ export default function HomePage(props) {
   const [loading, setLoading] = useState(false);
   console.log(data);
 
+  //Date
+  let dateObject = new Date();
+  let date =
+    dateObject.getDate().toString().length === 1 && `0${dateObject.getDate()}`;
+  let month =
+    (dateObject.getMonth() + 1).toString().length === 1 &&
+    `0${dateObject.getMonth() + 1}`;
+  let year = dateObject.getFullYear();
+  let dateNow = `${date}-${month}-${year}`;
+
+  //User
+  const firstName = localStorage.getItem("firstName");
+  const lastName = localStorage.getItem("lastName");
+  const pinCode = localStorage.getItem("pinCode");
+
   const backToLogIn = () => {
     localStorage.clear();
     history.push("/");
@@ -47,21 +62,6 @@ export default function HomePage(props) {
     getInfo();
     setLoading(false);
   }, []);
-
-  //Date
-  let dateObject = new Date();
-  let date =
-    dateObject.getDate().toString().length === 1 && `0${dateObject.getDate()}`;
-  let month =
-    (dateObject.getMonth() + 1).toString().length === 1 &&
-    `0${dateObject.getMonth() + 1}`;
-  let year = dateObject.getFullYear();
-  let dateNow = `${date}-${month}-${year}`;
-
-  //User
-  const firstName = localStorage.getItem("firstName");
-  const lastName = localStorage.getItem("lastName");
-  const pinCode = localStorage.getItem("pinCode");
 
   return (
     <div className="core">
