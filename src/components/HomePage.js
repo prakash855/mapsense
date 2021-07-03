@@ -61,7 +61,7 @@ export default function HomePage(props) {
   useEffect(() => {
     getInfo();
     setLoading(false);
-  }, []);
+  });
 
   return (
     <div className="core">
