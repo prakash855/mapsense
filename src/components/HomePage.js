@@ -57,7 +57,6 @@ export default function HomePage(props) {
             <span className="name">{`${firstName} ${lastName}`}</span>,
             {`${pinCode}`}
           </div>
-          <small className="mail">sharma.rohit408@gmail.com</small>
         </div>
         <div className="logo">
           <img
@@ -92,7 +91,7 @@ export default function HomePage(props) {
                 <TableCell align="right">{row.fee_type}</TableCell>
                 <TableCell align="right">{row.state_name}</TableCell>
                 <TableCell align="right">{row.vaccine}</TableCell>
-                <TableCell align="right">{row.b}</TableCell>
+                <TableCell align="right">{row.allow_all_age ? "for All":"For 18+"}</TableCell>
                 <TableCell align="right">
                   {row.slots.map((slot) => (
                     <div>{slot}</div>
