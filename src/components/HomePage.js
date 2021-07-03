@@ -64,7 +64,7 @@ export default function HomePage(props) {
         <div className="info">
           <div>
             <div>
-              <KeyboardBackspaceIcon onClick={()=>history.replace('/')} />
+              <KeyboardBackspaceIcon onClick={()=>history.push('/')} />
             </div>
             <span className="name">{`${firstName} ${lastName}`}</span>,
             {`${pinCode}`}
