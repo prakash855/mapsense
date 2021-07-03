@@ -35,7 +35,7 @@ export default function HomePage(props) {
 
   useEffect(() => {
     getInfo();
-  }, []);
+  });
 
   let dateObject = new Date();
   let date =
@@ -106,14 +106,14 @@ export default function HomePage(props) {
       <div className="actions">
         <Button
           onClick={() => history.goBack()}
-          style={{ marginRight: "1rem" }}
+          style={{ marginRight: "1rem", fontSize:"20px" }}
           variant="contained"
           color="secondary"
         >
           Go Back
         </Button>
         <Button
-          style={{ marginLeft: "1rem" }}
+          style={{ marginLeft: "1rem", fontSize:"20px" }}
           variant="contained"
           color="primary"
         >

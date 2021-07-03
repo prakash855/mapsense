@@ -2,6 +2,7 @@ import SignUp from "./components/SignUp";
 import HomePage from "./components/HomePage";
 import { Route, Switch } from "react-router-dom";
 function App() {
+  
   return (
     <div className="App">
       <Switch>
