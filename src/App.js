@@ -1,13 +1,16 @@
 import SignUp from "./components/SignUp";
 import HomePage from "./components/HomePage";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 function App() {
-  
   return (
     <div className="App">
       <Switch>
         <Route exact path to="/">
-          <SignUp />
+          {localStorage.getItem("pinCode") ? (
+            <Redirect to="/homepage" />
+          ) : (
+            <SignUp />
+          )}
         </Route>
         <Route to="homepage">
           <HomePage />

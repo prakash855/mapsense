@@ -50,12 +50,18 @@ export default function SignInSide(props) {
   const [lastName, setLastName] = useState("");
   const [pinCode, setPinCode] = useState("");
 
+  const validation = firstName && lastName && pinCode;
+
   const submitHandler = (e) => {
     e.preventDefault();
-    history.push("/homepage");
     localStorage.setItem("firstName", firstName);
     localStorage.setItem("lastName", lastName);
     localStorage.setItem("pinCode", pinCode);
+    validation && history.push("/homepage");
+  };
+
+  const Required = () => {
+    return <h6>*Please fill all the required fields</h6>;
   };
 
   const resetHandler = () => {
@@ -111,6 +117,7 @@ export default function SignInSide(props) {
               label="Pincode"
               name="pincode"
             />
+            <Required />
             <Button
               onClick={submitHandler}
               style={{
@@ -125,7 +132,7 @@ export default function SignInSide(props) {
               variant="contained"
               className={classes.submit}
             >
-              Show Statstics
+              Show Statistics
             </Button>
             <Button
               onClick={resetHandler}
