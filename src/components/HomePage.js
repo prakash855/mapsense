@@ -28,6 +28,11 @@ export default function HomePage(props) {
   const [loading, setLoading] = useState(false);
   console.log(data);
 
+  const backToLogIn = () => {
+    localStorage.clear();
+    history.push("/");
+  };
+
   const getInfo = () => {
     setLoading(true);
     fetch(
@@ -41,7 +46,7 @@ export default function HomePage(props) {
   useEffect(() => {
     getInfo();
     setLoading(false);
-  });
+  }, []);
 
   //Date
   let dateObject = new Date();
@@ -64,7 +69,7 @@ export default function HomePage(props) {
         <div className="info">
           <div>
             <div>
-              <KeyboardBackspaceIcon onClick={()=>history.push('/')} />
+              <KeyboardBackspaceIcon onClick={backToLogIn} />
             </div>
             <span className="name">{`${firstName} ${lastName}`}</span>,
             {`${pinCode}`}
@@ -96,7 +101,7 @@ export default function HomePage(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((row) => (
+              {data?.map((row) => (
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                     {row.pincode}
