@@ -11,7 +11,6 @@ import "./HomePage.css";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import Loader from "react-loader-spinner";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 
 const useStyles = makeStyles({
   table: {
@@ -41,7 +40,7 @@ export default function HomePage(props) {
   useEffect(() => {
     getInfo();
     setLoading(false);
-  });
+  }, []);
 
   //Date
   let dateObject = new Date();
@@ -63,9 +62,6 @@ export default function HomePage(props) {
       <div className="main">
         <div className="info">
           <div>
-            <div>
-              <KeyboardBackspaceIcon onClick={()=>history.push('/')} />
-            </div>
             <span className="name">{`${firstName} ${lastName}`}</span>,
             {`${pinCode}`}
           </div>
